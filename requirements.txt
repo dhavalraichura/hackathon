@@ -1,0 +1,49 @@
+# ─────────────────────────────────────────────
+# Enterprise Knowledge Assistant — Requirements
+# ─────────────────────────────────────────────
+
+# Core LLM & Embeddings
+sentence-transformers       # Open-source embeddings (HuggingFace)
+transformers               # HuggingFace transformer models
+torch                       # PyTorch backend
+
+# Vector Database
+faiss-cpu                  # Facebook FAISS - local vector search
+
+# Document Processing
+pypdf                       # PDF reading
+beautifulsoup4             # HTML/wiki parsing
+requests                   # HTTP requests for fetching docs
+pandas                      # CSV ticket processing
+python-docx                 # Word document support
+
+# LLM (local open-source via Ollama OR API)
+ollama                      # Run LLaMA3 locally (recommended)
+openai                     # Optional: OpenAI API fallback
+anthropic                  # Optional: Claude API fallback
+
+# Agentic Framework
+langchain                   # Agent orchestration
+langchain-community        # LangChain community tools
+langchain-core             # LangChain core
+
+# Web UI
+streamlit                  # Chat interface
+
+# API
+fastapi                   # REST API
+uvicorn                    # ASGI server
+
+# Evaluation
+scikit-learn               # Precision, Recall, F1
+numpy                    # Numerical ops
+rouge-score                # Text similarity scoring
+
+# Video Transcription (Optional - Secure on-premise)
+openai-whisper           # On-premise audio/video transcription
+
+# Utilities
+tqdm                      # Progress bars
+python-dotenv              # Environment variables
+colorama                   # Colored terminal output
+tabulate                   # Pretty table printing
