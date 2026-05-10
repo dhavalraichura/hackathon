@@ -168,10 +168,9 @@ def ingest_all():
                 print(f"     → {len(chunks)} chunks")
             time.sleep(1)
 
-    if not all_chunks:
-        # Final fallback: use built-in sample data
-        print("\n📝 Using built-in sample data for demo...")
-        all_chunks = _get_sample_chunks()
+    sample_chunks = _get_sample_chunks()
+    all_chunks.extend(sample_chunks)
+    print(f"  ✓ Added {len(sample_chunks)} built-in sample chunks")
 
     print(f"\n📊 Total chunks to embed: {len(all_chunks)}")
 
