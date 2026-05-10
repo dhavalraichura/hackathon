@@ -19,7 +19,15 @@ def _build_prompt(query: str, context_chunks: list[dict]) -> str:
     prompt = f"""You are an Enterprise Knowledge Assistant for an IT services company.
 Answer the employee's question using ONLY the context provided below.
 Always cite which source(s) your answer comes from.
-If the context does not contain enough information, say: "I don't have enough information to answer this confidently."
+If the context does not contain enough information, say: "I don't have enough information to answer this confidently.
+        TASK:
+        1. Answer the user's question using the context.
+        2. Check the files uploaded for any relevant information that can help answer the question.
+        3. If the question is about contact details, names, or specific data, prioritize extracting that from the files.
+        4. Also look at the files to see if they contain any relevant information that could help the user find the answer, even if the answer isn't directly in the files. For example, if the user asks "Who is the CEO?" and the file contains a company org chart but doesn't explicitly say "CEO", you can infer the answer based on titles and structure.
+        5. The file names and types are provided in the context. Use that to understand the source of information.
+        6. If you don't know the answer, say you don't know, but also mention if the files contain any relevant information that could help the user find the answer
+        7. If the question is vague, use the context to ask a clarifying question back to the user."
 
 CONTEXT:
 {context}
@@ -61,6 +69,8 @@ def _call_ollama(prompt: str) -> str:
     Install: https://ollama.com
     Run model: ollama pull llama3
     """
+    url = f"{config.OLLAMA_URL}/api/generate"
+    print(f"DEBUG: Calling {url} with model={config.LLM_MODEL}")  # add this
     try:
         resp = requests.post(
             f"{config.OLLAMA_URL}/api/generate",
@@ -69,7 +79,7 @@ def _call_ollama(prompt: str) -> str:
                 "prompt": prompt,
                 "stream": False,
                 "options": {
-                    "temperature": 0.1,    # low temp for factual answers
+                    "temperature": 0.7,    # low temp for factual answers
                     "num_predict": 512,
                 }
             },

@@ -4,46 +4,49 @@
 
 # Core LLM & Embeddings
 sentence-transformers       # Open-source embeddings (HuggingFace)
-transformers               # HuggingFace transformer models
+transformers                # HuggingFace transformer models
 torch                       # PyTorch backend
 
 # Vector Database
-faiss-cpu                  # Facebook FAISS - local vector search
+faiss-cpu                   # Facebook FAISS - local vector search
 
 # Document Processing
-pypdf                       # PDF reading
-beautifulsoup4             # HTML/wiki parsing
-requests                   # HTTP requests for fetching docs
+pypdf                       # PDF text extraction
+pdfplumber                  # PDF table + layout extraction
+pdf2image                   # Convert PDF pages to images for OCR
+beautifulsoup4              # HTML/wiki parsing
+requests                    # HTTP requests for fetching docs
 pandas                      # CSV ticket processing
-python-docx                 # Word document support
+python-docx                 # Word document (.docx) support
+openpyxl                    # Excel (.xlsx) support
+
+# OCR
+pytesseract                 # OCR engine wrapper (needs tesseract-ocr system package)
+Pillow                      # Image processing for OCR pipeline
+
+# Video Transcription
+openai-whisper              # On-premise audio/video transcription (Whisper)
+moviepy                     # Video → audio extraction before Whisper
 
 # LLM (local open-source via Ollama OR API)
-ollama                      # Run LLaMA3 locally (recommended)
-openai                     # Optional: OpenAI API fallback
-anthropic                  # Optional: Claude API fallback
-
-# Agentic Framework
-langchain                   # Agent orchestration
-langchain-community        # LangChain community tools
-langchain-core             # LangChain core
+ollama                      # Run Gemma4/LLaMA locally (recommended)
+openai                      # Optional: OpenAI API fallback
+anthropic                   # Optional: Claude API fallback
 
 # Web UI
-streamlit                  # Chat interface
+streamlit                   # Chat interface
 
 # API
-fastapi                   # REST API
-uvicorn                    # ASGI server
+fastapi                     # REST API
+uvicorn                     # ASGI server
 
 # Evaluation
-scikit-learn               # Precision, Recall, F1
-numpy                    # Numerical ops
-rouge-score                # Text similarity scoring
-
-# Video Transcription (Optional - Secure on-premise)
-openai-whisper           # On-premise audio/video transcription
+scikit-learn                # Precision, Recall, F1
+numpy                       # Numerical ops
+rouge-score                 # Text similarity scoring
 
 # Utilities
-tqdm                      # Progress bars
-python-dotenv              # Environment variables
-colorama                   # Colored terminal output
-tabulate                   # Pretty table printing
+tqdm                        # Progress bars
+python-dotenv               # Environment variables
+colorama                    # Colored terminal output
+tabulate                    # Pretty table printing
