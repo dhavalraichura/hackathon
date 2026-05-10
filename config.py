@@ -14,6 +14,7 @@ LLM_MODEL    = os.getenv("LLM_MODEL", "gemma4")        # ollama model name
 OPENAI_KEY   = os.getenv("OPENAI_API_KEY", "")
 ANTHROPIC_KEY= os.getenv("ANTHROPIC_API_KEY", "")
 OLLAMA_URL   = os.getenv("OLLAMA_URL", "http://localhost:11434")
+OLLAMA_TIMEOUT = 180   # seconds — add this line
 
 # ── Embedding Settings ────────────────────────
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"   # Free HuggingFace model, 384-dim
@@ -28,8 +29,8 @@ CHUNK_SIZE    = 400    # words per chunk
 CHUNK_OVERLAP = 50     # overlap words between chunks
 
 # ── Retrieval Settings ────────────────────────
-TOP_K              = 12      # number of chunks to retrieve
-CONFIDENCE_THRESHOLD = 0.20  # below this → escalate to human
+TOP_K              = 8      # number of chunks to retrieve
+CONFIDENCE_THRESHOLD = 0.40  # below this → escalate to human
 
 # ── Evaluation Settings ───────────────────────
 EVAL_DATASET_PATH = "data/eval_dataset.json"

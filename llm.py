@@ -63,14 +63,6 @@ def call_llm(query: str, context_chunks: list[dict]) -> str:
 
 
 def _call_ollama(prompt: str) -> str:
-    """
-    Call local Ollama server.
-    FREE — runs LLaMA3, Mistral, etc. fully on-premise.
-    Install: https://ollama.com
-    Run model: ollama pull llama3
-    """
-    url = f"{config.OLLAMA_URL}/api/generate"
-    print(f"DEBUG: Calling {url} with model={config.LLM_MODEL}")  # add this
     try:
         resp = requests.post(
             f"{config.OLLAMA_URL}/api/generate",
@@ -79,20 +71,24 @@ def _call_ollama(prompt: str) -> str:
                 "prompt": prompt,
                 "stream": False,
                 "options": {
-                    "temperature": 0.7,    # low temp for factual answers
+                    "temperature": 0.4,
                     "num_predict": 512,
                 }
             },
-            timeout=120
+            timeout=config.OLLAMA_TIMEOUT   # instead of hardcoded 120
         )
         resp.raise_for_status()
-        return resp.json().get("response", "").strip()
+        answer = resp.json().get("response", "").strip()
+
+        # ← ADD THIS: catch silent empty responses
+        if not answer:
+            return "I found relevant sources but was unable to generate a response. Please try rephrasing your question."
+
+        return answer
+    except requests.exceptions.Timeout:
+        return "⚠ Ollama timed out. The model may be overloaded — try again in a moment."
     except requests.exceptions.ConnectionError:
-        return (
-            "⚠ Ollama server not running. "
-            "Start it with: ollama serve\n"
-            "Or switch LLM_PROVIDER to 'openai' or 'anthropic' in .env"
-        )
+        return "⚠ Ollama server not running. Start it with: ollama serve"
     except Exception as e:
         return f"⚠ Ollama error: {e}"
 
