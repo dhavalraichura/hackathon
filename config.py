@@ -29,7 +29,7 @@ CHUNK_SIZE    = 400    # words per chunk
 CHUNK_OVERLAP = 50     # overlap words between chunks
 
 # ── Retrieval Settings ────────────────────────
-TOP_K              = 8      # number of chunks to retrieve
+TOP_K              = 3      # number of chunks to retrieve
 CONFIDENCE_THRESHOLD = 0.40  # below this → escalate to human
 
 # ── Evaluation Settings ───────────────────────
