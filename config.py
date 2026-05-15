@@ -10,7 +10,7 @@ load_dotenv()
 # ── LLM Settings ──────────────────────────────
 # Choose: "ollama" (free local) | "openai" | "anthropic"
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ollama")
-LLM_MODEL    = os.getenv("LLM_MODEL", "gemma4")        # ollama model name
+LLM_MODEL    = os.getenv("LLM_MODEL", "llama3")        # ollama model name
 OPENAI_KEY   = os.getenv("OPENAI_API_KEY", "")
 ANTHROPIC_KEY= os.getenv("ANTHROPIC_API_KEY", "")
 OLLAMA_URL   = os.getenv("OLLAMA_URL", "http://localhost:11434")

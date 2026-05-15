@@ -66,6 +66,17 @@ https://github.com/oschwartz10612/poppler-windows/releases
 # Then verify: 
 ffmpeg -version in a new terminal.
 
+# For Linux Users
+# Fedora
+sudo dnf install tesseract ffmpeg poppler-utils
+
+# Debian
+sudo apt update
+sudo apt install tesseract-ocr ffmpeg poppler-utils
+
+# Arch Linux
+sudo pacman -S tesseract ffmpeg poppler
+
 ```
 
 ### Step 2 — Setup LLM (Choose ONE option)
