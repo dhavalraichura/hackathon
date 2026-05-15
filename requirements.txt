@@ -19,6 +19,7 @@ requests                    # HTTP requests for fetching docs
 pandas                      # CSV ticket processing
 python-docx                 # Word document (.docx) support
 openpyxl                    # Excel (.xlsx) support
+imageio-ffmpeg              # Bundled ffmpeg (Windows-friendly, also works on Linux/Mac)
 
 # OCR
 pytesseract                 # OCR engine wrapper (needs tesseract-ocr system package)
