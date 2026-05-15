@@ -19,7 +19,7 @@ from llm import call_llm
 SAMPLE_EVAL_DATASET = [
     {
         "question": "How do I restart a Kubernetes pod?",
-        "relevant_sources": ["kubernetes-pods"],
+        "relevant_sources": ["kubernetes-pods"],        # matches _get_sample_chunks()
         "answer_keywords": ["kubectl", "delete", "pod"]
     },
     {
@@ -39,17 +39,17 @@ SAMPLE_EVAL_DATASET = [
     },
     {
         "question": "Steps to onboard a new engineer",
-        "relevant_sources": ["onboarding-sop"],
+        "relevant_sources": ["onboarding-sop", "onboarding_sop.txt"],  # both variants
         "answer_keywords": ["VPN", "repository", "Docker"]
     },
     {
         "question": "My Docker container is restarting with exit code 137",
-        "relevant_sources": ["ticket-002"],
+        "relevant_sources": ["ticket-002", "Ticket #2"],
         "answer_keywords": ["memory", "OOM", "mem_limit"]
     },
     {
         "question": "How to fix database connection refused on port 5432?",
-        "relevant_sources": ["ticket-001"],
+        "relevant_sources": ["ticket-001", "Ticket #1"],
         "answer_keywords": ["PostgreSQL", "systemctl", "firewall"]
     },
     {
@@ -58,7 +58,6 @@ SAMPLE_EVAL_DATASET = [
         "answer_keywords": ["uvicorn", "main:app", "pip install"]
     },
 ]
-
 
 class Evaluator:
     """

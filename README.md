@@ -47,6 +47,36 @@ venv\Scripts\activate           # Windows
 
 # Install dependencies
 pip install -r requirements.txt
+
+# For Windows Users
+# Tesseract
+# Download the installer from UB Mannheim (the official Windows build):
+https://github.com/UB-Mannheim/tesseract/wiki
+
+# Poppler (for pdf2image)
+# Download pre-built binaries:
+https://github.com/oschwartz10612/poppler-windows/releases
+
+# FFmpeg (for moviepy/video)
+# Download from:
+# https://www.gyan.dev/ffmpeg/builds/
+# Download the ffmpeg-release-essentials.zip, extract it, and add the bin folder to your system PATH:
+# Control Panel → System → Advanced → Environment Variables → Path → Add:
+# C:\ffmpeg\bin
+# Then verify: 
+ffmpeg -version in a new terminal.
+
+# For Linux Users
+# Fedora
+sudo dnf install tesseract ffmpeg poppler-utils
+
+# Debian
+sudo apt update
+sudo apt install tesseract-ocr ffmpeg poppler-utils
+
+# Arch Linux
+sudo pacman -S tesseract ffmpeg poppler
+
 ```
 
 ### Step 2 — Setup LLM (Choose ONE option)
